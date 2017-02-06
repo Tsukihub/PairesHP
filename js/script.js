@@ -86,8 +86,8 @@ function verif() { // Vérifie si une paire a été faite
 		clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
 		document.getElementById("photo").style.display = 'block';
 		document.getElementById("photo").style.flexDirection = 'column';
-		document.getElementById("photo").innerHTML = document.location.href="http://manindex.php.?nomdujoueur"+""&d; 
-		'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div>';
+		document.location.href='http://localhost/php/paires/index.php?temps=+min+":"+sec'
+		document.getElementById("photo").innerHTML = paires;'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div>';
 	}
 }
 
@@ -114,7 +114,7 @@ function chrono(){ //Function chronometre
 		min++;//ajoute une minute au chronometre
 		sec = "0" + 0;
 	}
-	document.getElementById("chronotime").innerHTML = min + ":" + sec +"";//afiche le chronometre dans le html a l'endroit ciblé par l'id
+	document.getElementById("chronotime").innerHTML = min + ":" + sec +"";//affiche le chronometre dans le html a l'endroit ciblé par l'id
 
 } 
  

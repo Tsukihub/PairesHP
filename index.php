@@ -1,29 +1,21 @@
 <?php $tabPhp = array("img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
 "img/lionne.jpg", "img/ours.jpg", "img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
 "img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"); 
-shuffle($tabPhp);
-var_dump($tabPhp);
+shuffle($tabPhp);//shuffle($array)
+// var_dump($tabPhp);//affiche tt le contenu du tableau en html
 ?>	
 <script type="text/javascript">
 	<?php 
+	$LongueurTableau = count($tabPhp);
 	$tableau=""; 
 
-	foreach ($tabPhp as $key => $CaseTableau) {
-		if($key!=13){
+	foreach ($tabPhp as $key => $CaseTableau) {//foreach($array as $index =>$contenuALindex){]récupère index et contenu dans variables
+		if($key!=$LongueurTableau-1){//pour tout le tableau sauf la dernière case
 	
     $tableau .= '"'.$CaseTableau.'",';
 }else{$tableau .= '"'.$CaseTableau.'"';}
- // $dernierecle=array_pop(array_keys($array));
- // foreach ($tabPhp as &$cle=>$valeurCase){
- // 	if ($cle===$dernierecle){
- 		
- // 	}
- // }
-
-    // as $key=>$value;
-		}
-		// else if{$tableau .= '"'.$value.'"';}
-  //   }
+}
+ // $dernierecle=array_pop(array_keys($array));//gets the last key inside of dernierecle
  
 	echo "var tab=[$tableau];";
 	?>
@@ -49,7 +41,7 @@ var_dump($tabPhp);
 		 <div id="photo"> 
 		  <!--ici javascript--> 
 		  <?php
-		  $LongueurTableau = count($tabPhp);
+//////////////////////////////////////////////////fonction afficher/////////////////////////////////////////	  
 		  for($numeroDosCarte=0; $numeroDosCarte<($LongueurTableau); $numeroDosCarte++){
           echo '<img src="img/dos.png" class="photo" onclick="choisir('.$numeroDosCarte.') "draggable="false">'; 
 	}
