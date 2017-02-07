@@ -3,7 +3,7 @@
 // "img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"];
 var dos = 'img/dos.png'; // On définie l'image de dos
 var clique=0;//Nombres de cliques
-var paires = 0;//Nombres de paires
+var triplet = 0;//Nombres de paires
 var choixun;//
 var choixdeux;//
 var norepeat = true;//empeche le chrono de se repeter
@@ -42,7 +42,7 @@ function choisir(carte) { // Choix des cartes quand l'utilisateur clique
 		norepeat = false;
 	}
 	 
-	if (clique == 2) { // Au delà du deuxième clique
+	if (clique == 3) { // Au delà du deuxième clique
 		return; // On affiche rien
 	}
 	if (clique == 0) { // Au premier clique
@@ -51,11 +51,17 @@ function choisir(carte) { // Choix des cartes quand l'utilisateur clique
 		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
 		clique = 1; // On passe le clique à 1
 	}
-	else { // Au deuxième clique
-		clique = 2; // On passe le clique à 2
-		choixdeux = carte; // On attribue le numéro de la carte choisie au deuxième choix
-		document.images[carte].src =  tab[carte]; // Affiche l'image de la carte correspondant au choix
-		timer = setTimeout("verif()", 500); // Ajoute un temps de pause puis passe à la fonction de vérification
+	else if(clique==1){ // Au deuxième clique
+		clique=2;
+		choixdeux = carte;// Affiche l'image de la carte correspondant au choix
+		document.images[carte].src =  tab[carte]; 
+		document.images[choixdeux].style.pointerEvents = 'none'; // Ajoute un temps de pause puis passe à la fonction de vérification
+	}else{
+		timer = setTimeout("verif()", 500);
+		clique = 3; // On passe le clique à 2
+		choixtrois = carte; // On attribue le numéro de la carte choisie au deuxième choix
+		document.images[carte].src =  tab[carte]; 
+		document.images[choixtrois].style.pointerEvents = 'none'; 
 	}	
 }
 
@@ -69,20 +75,27 @@ function choisir(carte) { // Choix des cartes quand l'utilisateur clique
 
 function verif() { // Vérifie si une paire a été faite
 	clique = 0;
-	if (tab[choixdeux] ==  tab[choixun]) {//si les deux cartes sont pareilles la paire reste fixe
-		paires++; 
-		document.getElementById("paires").innerHTML = paires;
-		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
-		document.images[choixun].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
-		document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
-		document.images[choixdeux].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
+	if (tab[choixdeux] ==  tab[choixun]&& tab[choixdeux]==tab[choixtrois]&&tab[choixtrois]==tab[choixun]) {
+		//si les deux cartes sont pareilles la paire reste fixe
+			triplet++; 
+			document.getElementById("paires").innerHTML = triplet;
+			document.images[choixun].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
+			document.images[choixun].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
+			document.images[choixdeux].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
+			document.images[choixdeux].style.opacity = '0.3';
+			document.images[choixtrois].style.pointerEvents = 'none';//Desactive l'evenement du clique(pas de double clique)
+			document.images[choixtrois].style.opacity = '0.3';// l'opacité s'applique sur la carte retournée
+	
 	} else {
 		document.images[choixun].src = dos;
-		document.images[choixun].style.pointerEvents = 'auto';//Desactive l'evenement du clique(pas de double clique)
+		document.images[choixun].style.pointerEvents = 'auto';
+		document.images[choixdeux].style.pointerEvents = 'auto';//Desactive l'evenement du clique(pas de double clique)
 		document.images[choixdeux].src = dos;
+		document.images[choixtrois].style.pointerEvents = 'auto';
+		document.images[choixtrois].src = dos;
 		return;
 	}
-	if (paires==1) {
+	if (triplet==7) {
 		// clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
 		// document.getElementById("photo").style.display = 'block';
 		// document.getElementById("photo").style.flexDirection = 'column';
