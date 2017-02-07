@@ -1,6 +1,8 @@
-<?php $tabPhp = array("img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
-"img/lionne.jpg", "img/ours.jpg", "img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
-"img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"); 
+ <?php 
+// $tabPhp = array("img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
+// "img/lionne.jpg", "img/ours.jpg", "img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
+// "img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"); 
+ $tabPhp = array("img/ane.jpg", "img/ane.jpg");
 shuffle($tabPhp);//shuffle($array)
 // var_dump($tabPhp);//affiche tt le contenu du tableau en html
 ?>	
@@ -18,6 +20,17 @@ shuffle($tabPhp);//shuffle($array)
  // $dernierecle=array_pop(array_keys($array));//gets the last key inside of dernierecle
  
 	echo "var tab=[$tableau];";
+	    if(isset($_GET["min"])){    
+        $min=$_GET["min"];
+		}else{$temps='';
+		}
+		echo $temps;
+		if(isset($_GET["sec"])){    
+        $sec=$_GET["sec"];
+    }
+    if(isset($_GET["nom"])){    
+        $nom=$_GET["nom"];
+    }
 	?>
 </script>
 <!DOCTYPE html>
@@ -41,9 +54,14 @@ shuffle($tabPhp);//shuffle($array)
 		 <div id="photo"> 
 		  <!--ici javascript--> 
 		  <?php
-//////////////////////////////////////////////////fonction afficher/////////////////////////////////////////	  
+//////////////////////////////////////////////////fonction afficher/////////////////////////////////////////	   
+		  if(isset($_GET["min"])){ 
+	echo '<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="restart()"></div>';
+	echo "vous avez gagné en $min:$sec, $nom";
+}else{
 		  for($numeroDosCarte=0; $numeroDosCarte<($LongueurTableau); $numeroDosCarte++){
           echo '<img src="img/dos.png" class="photo" onclick="choisir('.$numeroDosCarte.') "draggable="false">'; 
+	}
 	}
 ?>
 

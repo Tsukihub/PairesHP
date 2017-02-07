@@ -82,17 +82,17 @@ function verif() { // Vérifie si une paire a été faite
 		document.images[choixdeux].src = dos;
 		return;
 	}
-	if (paires==7) {
-		clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
-		document.getElementById("photo").style.display = 'block';
-		document.getElementById("photo").style.flexDirection = 'column';
-		document.location.href='http://localhost/php/paires/index.php?temps=+min+":"+sec'
-		document.getElementById("photo").innerHTML = paires;'<h1> Vous avez gagné !</h1><br /><div class="boutton"><input type="button" class="restart" value="Recommencer" onClick="window.location.reload()"></div>';
+	if (paires==1) {
+		// clearInterval(timerID);//arette le chrono quand toutes les paires trouvées
+		// document.getElementById("photo").style.display = 'block';
+		// document.getElementById("photo").style.flexDirection = 'column';
+		var nom=prompt(nom);
+		document.location.href='/php/paires/index.php?min='+min+"&sec="+sec+"&nom="+nom;
 	}
 }
 
 
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //                                                                         CHRONOMETRE                                                              //
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -118,4 +118,6 @@ function chrono(){ //Function chronometre
 
 } 
  
- 
+function restart(){
+	document.location.href='/php/paires/';
+}
