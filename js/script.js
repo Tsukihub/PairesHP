@@ -1,35 +1,8 @@
-// var tab = ["img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", "img/lapins.jpg", 
-// "img/lionne.jpg", "img/ours.jpg", "img/ane.jpg", "img/chat.jpg", "img/chien.jpg", "img/lama.jpg", 
-// "img/lapins.jpg", "img/lionne.jpg", "img/ours.jpg"];
-var dos = 'img/dos.png'; // On définie l'image de dos
-var clique=0;//Nombres de cliques
-var triplet = 0;//Nombres de paires
-var choixun;//
-var choixdeux;//
-var norepeat = true;//empeche le chrono de se repeter
+var dos = 'img/dos.png'; 
+var clique=0;//reset dans verif() utile dans choisir()
+var triplet = 0;//Utile dans verif()pour mettre fin au jeu et pour affichage triplets trouvés
+var norepeat = true;//empeche le chrono de pouvoir être relancé dans choisir()
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- //                                                                         AFFICHER LES IMAGES                                                         //
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// function afficherimage() {
-// 	for(i=0; i<=tab.length-1; i++) {
-// 		document.getElementById("photo").innerHTML += '<img src="img/dos.png" class="photo" onclick="choisir('+i+')" draggable="false">'
-// 	}
-// }
-
-// afficherimage();//charge la fonction au chargement de la page
-
-// function random(tab){ //fonction qui permet de melanger les images
-// 	var j, x, i;
-// 	for(i = tab.length; i; i--) { //pour i=longueur totale du tableau, i toujours vrai(sup a zero), on decremente i(on lui enleve 1).
-// 		j = Math.floor(Math.random() * i);//Math.floor arondie a la valeur superieure,Math.random donne un nombre aleatoire (entre 0 et 1)le tout * i
-// 		x = tab[i-1];  //decale de 1 à l'interrieur du tableau(ex:si i=13 X deviendra lionne)
-// 		tab[i-1] = tab[j]; //si i= 13 tab 12(i-1) deviendras J(j=nombre aleatoire)
-// 		tab[j] = x; //j deviens X(pour cette exemple x=lionne)
-// 	}
-// }
-// random(tab);//On appelle la fonction random
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //                                                                           CHOIX DES CARTES                                                         //
